@@ -35,22 +35,26 @@ public with sharing class ClassesObjectsMethods {
      * Question 1
      * It initializes a String to "Hello, Salesforce!" and demonstrates usage of
      * the length, substring, and toLowerCase methods of the String class.
-     * Example: practiceStringMethods() should return a list like ["17", "Hello", "hello, salesforce!"].
+     * Example: practiceStringMethods() should return a list like ["18", "Hello", "hello, salesforce!"].
      * @return A list containing the length of the string, a substring of the string, and the string in lower case.
      */
     public static List<String> practiceStringMethods() {
         // Initialize a String with 'Hello, Salesforce!'
-        
-        // Get the length of the String        
+        String Word = 'Hello, Salesforce!';
+        // Get the length of the String    
+        Integer thelength = Word.length();  
+        String Sthelength  = String.valueOf(thelength);
         // Get a substring of the String of the first 5 characters
+        String word2 = word.substring(0,5);
         // Convert the String to lower case
-        
+         String word3 = word.toLowerCase();
         // Return the list with the string data
         // In the first position add the string length
         // In the second position add the substring
         // In the third position add the string in lower case
+        List<String> returnList = new List<String>{Sthelength,word2,word3};
 
-        return null; // Replace null with the variable you used to store the result
+        return returnList; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -62,14 +66,14 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
-        
+        List<Boolean> booleanlist = new List<Boolean>();
         // Check if the string starts with 'Sales'
-        
+        booleanlist.add(input.startswith('Sales'));
         // Check if the string ends with 'Force'
-        
+        booleanlist.add(input.endswith('Force'));
         // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        booleanlist.add(input.contains('Awesome'));
+        return booleanlist; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -81,15 +85,17 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
-
+        List<String> words = sentence.split(' ');
         // Create a set to store the unique words
-
+        Set<String> words2 = new Set<String>(words);
         // Add each word to the set
+        String words3 = '';
 
+        words3 = String.join(new List<String>(words2),' ');
         // Join the unique words back into a sentence
 
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return words3; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -102,16 +108,21 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
-
-        /*
-        for () {
+            Integer count=0;
+            String vowels = 'aeiouAEIOU';
+        for (Integer i = 0; i < str.length(); i++) 
+        {
             // get individual characters from the string - hint use substring or split
+            String str1 = str.substring(i,i+1);
+
             // check if the character is a vowel
             // if it is a vowel, increment the result Integer
+            if(vowels.contains(str1))
+            {
+                count++;
+            }
         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        return count; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -126,16 +137,25 @@ public with sharing class ClassesObjectsMethods {
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
         // The variable to store the concatenated string
-
+            String Bigword = '';
         // Loop through the list of scientists' names
-
-            // If the name doesn't contain the letter 'G', skip this iteration
-
-            // Add the name to the result string, followed by a comma
+          for(String name : scientistNames)
+          {
+            String lowername = name.toLowerCase();
+             // Check if the name contains the letter 'g'
+             if(lowername.contains('g'))
+             {
+                // If it does, concatenate the name to the result string
+                Bigword = Bigword+name+',';
+             }
+          }
+          if(Bigword.endsWith(','))
+          Bigword = Bigword.substring(0,Bigword.length()-1);
+        // Add the name to the result string, followed by a comma
 
         // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+            
+        return Bigword; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -148,12 +168,15 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
         // Square the input numbers using the Math.pow() function
-
+        a = math.pow(a,2);
+        b = math.pow(b,2);
         // Calculate the absolute difference using Math.abs() function
-
-        // Return the result
-        return null; // Replace null with the variable you used to store the result
+        Double absolute = math.abs(a-b);
+        // Return the absolute difference
+        return absolute; // Replace null with the variable you used to store the result
     }
+
+   
 
     /**
      * Question 7
@@ -163,9 +186,10 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
-
+        Double random = math.random();
+        Integer randomnumber = 50 + (Integer)(random*50);
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return randomnumber; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -176,11 +200,11 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String getCurrentDate() {
         // Get the todays date
-
-        // Format the current date
-
+        Date todaysDate = Date.today();
+        // Format the current date 
+        String formatted = todaysDate.format();
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return formatted; // Replace null with the variable you used to store the result
     }
 
     /**
